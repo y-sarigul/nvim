@@ -1,14 +1,25 @@
-vim.opt.cursorline = true
-vim.opt.termguicolors = true
-vim.opt.winblend = 0
-vim.opt.wildoptions = 'pum'
-vim.opt.pumblend = 5
-vim.opt.background = 'dark'
+local api = vim.api
+local g = vim.g
+local opt = vim.opt
 
-vim.opt.guicursor:append("a:block")
-vim.api.nvim_win_set_option(0, 'cursorline', false)
-vim.opt.so:append("99");
-vim.opt.guicursor:append("a:blinkon1")
+api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+g.mapleader = " "
+g.maplocalleader = " "
+
+opt.cursorline = true
+opt.termguicolors = true
+opt.winblend = 0
+opt.wildoptions = 'pum'
+opt.pumblend = 5
+opt.background = 'dark'
+
+opt.guicursor:append("a:block")
+api.nvim_win_set_option(0, 'cursorline', false)
+opt.so:append("99");
+opt.guicursor:append("a:blinkon1")
+
+-- Time in milliseconds to wait for a mapped sequence to complete.
+opt.timeoutlen = 300
 
 
 -- highlight yanked text for 200ms using the "Visual" highlight group

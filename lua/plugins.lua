@@ -12,9 +12,21 @@ packer.startup(function(use)
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim' }
   }
-  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-    require("toggleterm").setup()
-  end }
+  -- toggleterm
+  use {
+    "folke/akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("config.toggleterm").setup()
+    end,
+  }
+  -- WhichKey
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("config.whichkey").setup()
+    end,
+  }
   -- using packer.nvim
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
   use 'nvim-lualine/lualine.nvim' -- Statusline
