@@ -13,4 +13,7 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 keymap.set('n', 'te', ':tabedit')
 
 -- Neotree
-keymap.set('n', '<C-t>', ':Neotree<CR>')
+--keymap.set('n', '<C-t>', ':Neotree<CR>')
+
+--Terminals
+keymap.set('n', '<C-t>', ':terminal<CR>')

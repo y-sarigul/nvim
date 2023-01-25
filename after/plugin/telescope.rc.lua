@@ -46,6 +46,7 @@ vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
       no_ignore = false,
+      initial_mode = "normal",
       hidden = true
     })
   end)
@@ -53,7 +54,9 @@ vim.keymap.set('n', ';r', function()
   builtin.live_grep()
 end)
 vim.keymap.set('n', '\\\\', function()
-  builtin.buffers()
+  builtin.buffers({
+    initial_mode = "normal";
+  })
 end)
 vim.keymap.set('n', ';t', function()
   builtin.help_tags()
