@@ -13,7 +13,7 @@ opt.wildoptions = 'pum'
 opt.pumblend = 5
 opt.background = 'dark'
 
-opt.guicursor:append("a:block")
+--opt.guicursor:append("a:block")
 api.nvim_win_set_option(0, 'cursorline', false)
 opt.so:append("99");
 opt.guicursor:append("a:blinkon1")

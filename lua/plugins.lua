@@ -13,13 +13,17 @@ packer.startup(function(use)
     requires = { 'tjdevries/colorbuddy.nvim' }
   }
   -- toggleterm
-  use {
-    "folke/akinsho/toggleterm.nvim",
-    tag = '*',
-    config = function()
-      require("config.toggleterm").setup()
-    end,
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end
   }
+  -- Statusline
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   -- WhichKey
   use {
     "folke/which-key.nvim",
@@ -27,10 +31,61 @@ packer.startup(function(use)
       require("config.whichkey").setup()
     end,
   }
+
+  -- Load only when require
+  use { "nvim-lua/plenary.nvim", module = "plenary" }
+
+  -- Better icons
+  use {
+    "kyazdani42/nvim-web-devicons",
+    module = "nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup { default = true }
+    end,
+  }
+
+  -- Better Comment
+  use {
+    "numToStr/Comment.nvim",
+    opt = true,
+    keys = { "gc", "gcc", "gbc" },
+    config = function()
+      require("Comment").setup {}
+    end,
+  }
+
+  -- Easy hopping
+  use {
+    "phaazon/hop.nvim",
+    cmd = { "HopWord", "HopChar1" },
+    config = function()
+      require("hop").setup {}
+    end,
+  }
+
+  -- Easy motion
+  use {
+    "ggandor/lightspeed.nvim",
+    keys = { "s", "S", "f", "F", "t", "T" },
+    config = function()
+      require("lightspeed").setup {}
+    end,
+  }
+  -- Markdown
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    ft = "markdown",
+    cmd = { "MarkdownPreview" },
+  }
+
+  -- IndentLine
+  --
+  use "lukas-reineke/indent-blankline.nvim"
   -- using packer.nvim
   use { 'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons' }
-  use 'nvim-lualine/lualine.nvim' -- Statusline
-  use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
@@ -46,22 +101,12 @@ packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
-  use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
-  use { 'numToStr/Comment.nvim',
-    requires = {
-      'JoosepAlviste/nvim-ts-context-commentstring'
-    }
-  }
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/zen-mode.nvim'
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
   use 'akinsho/nvim-bufferline.lua'
   -- use 'github/copilot.vim'
 
